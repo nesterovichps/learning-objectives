@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 from pyrob.api import *
+
+
 def check():
     if wall_is_above() and wall_is_beneath():
         fill_cell()
@@ -17,7 +19,6 @@ def check():
 @task(delay=0.01)
 def task_8_11():
     while not wall_is_on_the_right():
-
         check()
         move_right()
     check()

@@ -5,7 +5,6 @@ from pyrob.api import *
 
 @task
 def example1():
-
     for i in range(4):
         move_right()
         move_down()

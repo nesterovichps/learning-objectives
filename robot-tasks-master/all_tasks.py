@@ -36,10 +36,8 @@ import task_30
 import task_31
 import task_32
 
-
 if __name__ == '__main__':
-    sss=0
+    sss = 0
     res = run_tasks(headless=True)
     sss += 1
     sys.exit(0 if res else -1)
-

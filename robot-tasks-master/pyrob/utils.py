@@ -8,7 +8,6 @@ logger = logging.getLogger(__name__)
 
 
 def log_invocation(f):
-
     @functools.wraps(f)
     def wrapper(*args, **kwargs):
         logger = sys.modules[f.__module__].logger
@@ -21,7 +20,6 @@ def log_invocation(f):
 
 
 class AllowInternalContext():
-
     _allow_internal = False
 
     @classmethod
@@ -52,8 +50,8 @@ def allow_internal(flag, ctx=True):
     else:
         AllowInternalContext.allow_internal(flag)
 
-def internal(f):
 
+def internal(f):
     @functools.wraps(f)
     def wrapper(*args, **kwargs):
         if not AllowInternalContext.internal_allowed():
@@ -64,7 +62,6 @@ def internal(f):
 
 
 def public(f):
-
     @functools.wraps(f)
     def wrapper(*args, **kwargs):
         with allow_internal(True):

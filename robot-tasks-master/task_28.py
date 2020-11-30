@@ -11,12 +11,9 @@ def task_7_6():
 
         move_right()
         if cell_is_filled():
-            y+=1
+            y += 1
         if x == y:
-
             break
-
-
 
 
 if __name__ == '__main__':

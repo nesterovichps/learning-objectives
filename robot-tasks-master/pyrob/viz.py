@@ -16,8 +16,8 @@ GRID_COLOR = '#e6e6e6'
 X_OFFSET = 50
 Y_OFFSET = 50
 
-ROBOT_RADIUS = (CELL_SIZE - 2*WALL_THICKNESS - 10) // 2
-ROBOT_OFFSET = (CELL_SIZE - 2*ROBOT_RADIUS) // 2
+ROBOT_RADIUS = (CELL_SIZE - 2 * WALL_THICKNESS - 10) // 2
+ROBOT_OFFSET = (CELL_SIZE - 2 * ROBOT_RADIUS) // 2
 ROBOT_THICKNESS = 5
 ROBOT_COLOR = '#bdbec0'
 ROBOT_SUCCESS_COLOR = '#92dcb9'
@@ -44,21 +44,19 @@ DEFAULT_DELAY = 0.15
 
 
 def init():
-
     global tk
     tk = Tk()
     tk.resizable(0, 0)
 
 
 def render_maze(task_id):
-
     for w in tk.winfo_children():
         w.destroy()
 
     m, n = rob.get_field_size()
 
-    w = CELL_SIZE*n + 2*X_OFFSET
-    h = CELL_SIZE*m + 2* Y_OFFSET
+    w = CELL_SIZE * n + 2 * X_OFFSET
+    h = CELL_SIZE * m + 2 * Y_OFFSET
 
     sw = tk.winfo_screenwidth()
     sh = tk.winfo_screenheight()
@@ -78,8 +76,8 @@ def render_maze(task_id):
     for i in range(m):
         for j in range(n):
 
-            x = X_OFFSET + j*CELL_SIZE
-            y = Y_OFFSET + i*CELL_SIZE
+            x = X_OFFSET + j * CELL_SIZE
+            y = Y_OFFSET + i * CELL_SIZE
 
             cs = (x, y)
             ce = (x + CELL_SIZE - 1, y + CELL_SIZE - 1)
@@ -116,15 +114,19 @@ def render_maze(task_id):
             we = (x + CELL_SIZE - 1, y + CELL_SIZE - 1)
             lines.append((ws, we, wc))
 
-    lines.append(((X_OFFSET - WALL_THICKNESS, Y_OFFSET - WALL_THICKNESS), (X_OFFSET + n*CELL_SIZE + WALL_THICKNESS, Y_OFFSET + WALL_THICKNESS), WALL_COLOR))
-    lines.append(((X_OFFSET - WALL_THICKNESS, Y_OFFSET + m*CELL_SIZE), (X_OFFSET + n*CELL_SIZE + WALL_THICKNESS, Y_OFFSET + m*CELL_SIZE + WALL_THICKNESS), WALL_COLOR))
-    lines.append(((X_OFFSET - WALL_THICKNESS, Y_OFFSET - WALL_THICKNESS), (X_OFFSET, Y_OFFSET + m*CELL_SIZE + WALL_THICKNESS), WALL_COLOR))
-    lines.append(((X_OFFSET + n*CELL_SIZE, Y_OFFSET - WALL_THICKNESS), (X_OFFSET + n*CELL_SIZE + WALL_THICKNESS, Y_OFFSET + m*CELL_SIZE + WALL_THICKNESS), WALL_COLOR))
+    lines.append(((X_OFFSET - WALL_THICKNESS, Y_OFFSET - WALL_THICKNESS),
+                  (X_OFFSET + n * CELL_SIZE + WALL_THICKNESS, Y_OFFSET + WALL_THICKNESS), WALL_COLOR))
+    lines.append(((X_OFFSET - WALL_THICKNESS, Y_OFFSET + m * CELL_SIZE),
+                  (X_OFFSET + n * CELL_SIZE + WALL_THICKNESS, Y_OFFSET + m * CELL_SIZE + WALL_THICKNESS), WALL_COLOR))
+    lines.append(((X_OFFSET - WALL_THICKNESS, Y_OFFSET - WALL_THICKNESS),
+                  (X_OFFSET, Y_OFFSET + m * CELL_SIZE + WALL_THICKNESS), WALL_COLOR))
+    lines.append(((X_OFFSET + n * CELL_SIZE, Y_OFFSET - WALL_THICKNESS),
+                  (X_OFFSET + n * CELL_SIZE + WALL_THICKNESS, Y_OFFSET + m * CELL_SIZE + WALL_THICKNESS), WALL_COLOR))
 
     def rect(start, end, *args, **kwargs):
         canvas.create_rectangle(start[0], start[1], end[0] + 1, end[1] + 1, *args, **kwargs)
 
-    def make_label(x, y, text,):
+    def make_label(x, y, text, ):
         f = Frame(canvas, height=CELL_SIZE, width=CELL_SIZE)
         f.pack_propagate(0)
         f.place(x=x, y=y)
@@ -133,10 +135,10 @@ def render_maze(task_id):
         return label
 
     for i in range(m):
-        make_label(X_OFFSET - CELL_SIZE - WALL_THICKNESS, Y_OFFSET + CELL_SIZE*i, str(i + 1))
+        make_label(X_OFFSET - CELL_SIZE - WALL_THICKNESS, Y_OFFSET + CELL_SIZE * i, str(i + 1))
 
     for j in range(n):
-        make_label(X_OFFSET + CELL_SIZE*j, Y_OFFSET-CELL_SIZE - WALL_THICKNESS, str(j + 1))
+        make_label(X_OFFSET + CELL_SIZE * j, Y_OFFSET - CELL_SIZE - WALL_THICKNESS, str(j + 1))
 
     for i, j, cs, ce in cells:
         color = CELL_COLOR_MAP[rob.get_cell_type(i, j)]
@@ -146,19 +148,19 @@ def render_maze(task_id):
         rect(ws, we, fill=wc, width=0)
 
     for (x, y) in parking_points:
-        canvas.create_oval(x, y, x + 2*PARKING_POINT_RADIUS, y + 2*PARKING_POINT_RADIUS, width=0, fill=PARKING_POINT_COLOR)
+        canvas.create_oval(x, y, x + 2 * PARKING_POINT_RADIUS, y + 2 * PARKING_POINT_RADIUS, width=0,
+                           fill=PARKING_POINT_COLOR)
 
-
-    canvas.create_oval(0, 0, 2*ROBOT_RADIUS, 2*ROBOT_RADIUS, tags='robot', width=ROBOT_THICKNESS, outline=ROBOT_COLOR)
+    canvas.create_oval(0, 0, 2 * ROBOT_RADIUS, 2 * ROBOT_RADIUS, tags='robot', width=ROBOT_THICKNESS,
+                       outline=ROBOT_COLOR)
 
 
 def update_robot_position(delay):
-
     def callback(i, j):
         x1, y1 = tuple(map(int, canvas.coords('robot')[:2]))
-        x2 = X_OFFSET + CELL_SIZE*j + ROBOT_OFFSET
-        y2 = Y_OFFSET + CELL_SIZE*i + ROBOT_OFFSET
-        canvas.move('robot', x2-x1, y2-y1)
+        x2 = X_OFFSET + CELL_SIZE * j + ROBOT_OFFSET
+        y2 = Y_OFFSET + CELL_SIZE * i + ROBOT_OFFSET
+        canvas.move('robot', x2 - x1, y2 - y1)
 
         tk.update_idletasks()
         tk.update()
@@ -197,7 +199,6 @@ def update_cell_color(i, j, type):
 
 
 def sleep(pause):
-
     tk.update_idletasks()
     tk.update()
 

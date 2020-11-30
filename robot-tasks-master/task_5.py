@@ -9,6 +9,5 @@ def task_5_2():
         move_right()
 
 
-
 if __name__ == '__main__':
     run_tasks()

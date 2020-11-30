@@ -12,5 +12,6 @@ def task_1_2():
     move_down()
     # fill_cell()
 
+
 if __name__ == '__main__':
     run_tasks()

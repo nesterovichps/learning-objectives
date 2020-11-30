@@ -2,6 +2,7 @@
 
 from pyrob.api import *
 
+
 def check():
     while not wall_is_on_the_right():
         move_right()
@@ -14,6 +15,7 @@ def check():
         # if wall_is_beneath():
         #     return
         move_down()
+
 
 @task(delay=0.01)
 def task_8_30():

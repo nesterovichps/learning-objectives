@@ -21,6 +21,5 @@ def task_5_10():
         move_left()
 
 
-
 if __name__ == '__main__':
     run_tasks()

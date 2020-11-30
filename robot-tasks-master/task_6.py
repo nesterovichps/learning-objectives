@@ -10,5 +10,6 @@ def task_5_3():
     while wall_is_beneath():
         move_right()
 
+
 if __name__ == '__main__':
     run_tasks()

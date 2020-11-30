@@ -15,7 +15,7 @@ class Task:
         i = random.randint(2, 8)
 
         rob.goto(i, j)
-        for k in range(j, j+l+1):
+        for k in range(j, j + l + 1):
             rob.put_wall(bottom=True)
             rob.move_right()
 
@@ -23,7 +23,5 @@ class Task:
 
         rob.goto(i, 1)
 
-
     def check_solution(self):
-
         return rob.is_parking_point()

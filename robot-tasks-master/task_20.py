@@ -6,7 +6,7 @@ from pyrob.api import *
 @task(delay=0.01)
 def task_4_3():
     move_right()
-    n=27
+    n = 27
     for i in range(12):
         for j in range(n):
             fill_cell()

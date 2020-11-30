@@ -4,6 +4,7 @@ import pyrob.core as rob
 from pyrob.tasks import check_filled_cells, find_cells_to_be_filled
 import random
 
+
 class Task:
     CHECKS = 5
 
@@ -29,7 +30,7 @@ class Task:
 
         self.cells_to_fill = find_cells_to_be_filled()
 
-        rob.set_parking_cell(1, m-1)
+        rob.set_parking_cell(1, m - 1)
 
         rob.goto(1, 0)
 

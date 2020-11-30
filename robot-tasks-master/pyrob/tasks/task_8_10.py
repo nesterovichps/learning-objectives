@@ -31,12 +31,12 @@ class Task:
             if not rob.wall_is_beneath():
                 rob.set_cell_type(3, j, rob.CELL_TO_BE_FILLED)
 
-            if j != n-1:
+            if j != n - 1:
                 rob.move_right()
 
         self.cells_to_fill = find_cells_to_be_filled()
 
-        rob.set_parking_cell(2, n-1)
+        rob.set_parking_cell(2, n - 1)
 
         rob.goto(2, 0)
 

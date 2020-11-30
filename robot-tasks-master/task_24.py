@@ -2,6 +2,7 @@
 
 from pyrob.api import *
 
+
 def krest():
     move_down(2)
     move_right()
@@ -18,6 +19,8 @@ def krest():
     fill_cell()
     move_up()
     move_left(2)
+
+
 @task(delay=0.01)
 def task_2_1():
     krest()

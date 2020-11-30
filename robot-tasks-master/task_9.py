@@ -13,6 +13,5 @@ def task_8_2():
             fill_cell()
 
 
-
 if __name__ == '__main__':
     run_tasks()

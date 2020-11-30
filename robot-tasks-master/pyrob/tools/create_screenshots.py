@@ -12,7 +12,6 @@ tasks = [t.__name__ for t in pyrob.tasks_to_run]
 pyrob.utils.allow_internal(True, False)
 
 for task_id in tasks:
-
     pyrob.core.on_position_changed = None
 
     cls = pyrob.get_task_class(task_id)
@@ -33,6 +32,3 @@ for task_id in tasks:
     h = pyrob.viz.canvas.winfo_height()
 
     ImageGrab.grab(bbox=(x, y, x + w, y + h)).save('/tmp/{}.png'.format(task_id))
-
-
-

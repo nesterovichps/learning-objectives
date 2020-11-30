@@ -9,7 +9,7 @@ def task_8_6():
         if not wall_is_above() and wall_is_beneath():
             fill_cell()
         move_right()
-    if  not wall_is_above() and wall_is_beneath():
+    if not wall_is_above() and wall_is_beneath():
         fill_cell()
 
 

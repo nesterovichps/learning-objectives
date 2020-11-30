@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 from pyrob.api import *
+
+
 def krest():
     move_down()
 
@@ -26,7 +28,7 @@ def task_2_4():
             if j < 9:
                 move_right(4)
         move_left(36)
-        if i <4:
+        if i < 4:
             move_down(4)
 
     # move_down()

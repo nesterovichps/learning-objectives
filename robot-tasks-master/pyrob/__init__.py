@@ -18,7 +18,6 @@ def get_task_class(task_id):
 
 
 def task(*args, **kwargs):
-
     def decorator(f):
 
         @functools.wraps(f)
@@ -58,7 +57,7 @@ def task(*args, **kwargs):
                     logger.debug('Test #{} passed for task {}'.format(i + 1, task_id))
                     viz.on_task_completed(True)
                 else:
-                    logger.error('Test #{} failed for task {}'.format(i+1, task_id))
+                    logger.error('Test #{} failed for task {}'.format(i + 1, task_id))
                     if crashed:
                         viz.on_robot_crashed()
                     elif error:
@@ -82,7 +81,6 @@ def task(*args, **kwargs):
 
 
 def run_tasks(verbose=False, headless=False):
-
     logging.basicConfig(level=(logging.DEBUG if verbose else logging.INFO))
 
     global viz

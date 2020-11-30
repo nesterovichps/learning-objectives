@@ -4,10 +4,10 @@ from pyrob.api import *
 
 
 def chexk():
-    x=0
+    x = 0
     if wall_is_above() and wall_is_beneath():
         if cell_is_filled():
-            x+=1
+            x += 1
         else:
             fill_cell()
         return x
@@ -25,10 +25,10 @@ def chexk():
 
 @task(delay=0.01)
 def task_8_18():
-    v=0
+    v = 0
 
     while not wall_is_on_the_right():
-        v+=chexk()
+        v += chexk()
         move_right()
     # print(v)
     mov('ax', v)

@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 from pyrob.api import *
+
+
 def krest():
     move_down(2)
 
@@ -18,14 +20,14 @@ def krest():
     move_up()
     move_left()
 
+
 @task(delay=0.01)
 def task_2_2():
-    for i in range (5):
+    for i in range(5):
         krest()
-        if i<4:
+        if i < 4:
             move_right(4)
     move_down()
-
 
 
 if __name__ == '__main__':

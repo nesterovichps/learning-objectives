@@ -9,19 +9,18 @@ class Task:
 
     def load_level(self, n):
 
-        m = 1 + 2*(n+2)
+        m = 1 + 2 * (n + 2)
 
         rob.set_field_size(m, m)
 
-
         for i in range(m):
             for j in range(m):
-                if i != j and i != m-1-j:
+                if i != j and i != m - 1 - j:
                     rob.set_cell_type(i, j, rob.CELL_TO_BE_FILLED)
 
         self.cells_to_be_filled = find_cells_to_be_filled()
 
-        rob.set_parking_cell(m-1, 0)
+        rob.set_parking_cell(m - 1, 0)
 
         rob.goto(0, 0)
 
