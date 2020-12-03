@@ -7,3 +7,18 @@
 # 3. Год должен приводиться к целому положительному числу в диапазоне от 1 до 9999
 # 4. Длина исходной строки для частей должна быть в соответствии с форматом
 #  (т.е. 2 символа для дня, 2 - для месяца, 4 - для года)
+
+import datetime
+
+dd = range(1, 32)
+
+mm = range(1, 13)
+yyyy = range(1, 9999)
+
+for y in yyyy:
+    for m in mm:
+        for d in dd:
+            try:
+                print('Дата', datetime.datetime(y, m, d).strftime('%d.%m.%Y'))
+            except:
+                pass

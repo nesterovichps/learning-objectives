@@ -14,7 +14,7 @@ mm = ['января', 'февраля', 'марта', 'апреля', 'мая', 
       'декабря']
 yyyy = range(2010, 2021)
 print_result = 'Дата {} {} {} года '
-# print(print_result)
+
 for y in yyyy:
     for m in mm:
         for d in dd:
