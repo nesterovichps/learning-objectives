@@ -1,6 +1,4 @@
-from datetime import datetime as dt, timedelta
-last_seen=dt.now()-timedelta(days=2)
-print(last_seen , dt.now())
-print((dt.now() - last_seen).days < 180)
-print((last_seen + timedelta(days=180)) > dt.now())
-print(((dt.now() - last_seen)) < timedelta(days=180))
+x=2
+y=4
+z=6
+print((lambda x,y,z:x+2+y+z)(x,y,z))
