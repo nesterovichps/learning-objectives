@@ -1,0 +1,5 @@
+name: Vasiliy
+health: 551
+damage: 40
+delta_damage: 20
+armor: 1.2

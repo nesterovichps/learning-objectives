@@ -1,0 +1,5 @@
+name: Sergey
+health: 745
+damage: 30
+delta_damage: 20
+armor: 1.2
