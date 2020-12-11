@@ -12,6 +12,7 @@ person3 = {'card': 4276123465440002, 'pin': 9092, 'money': 300.90}
 
 bank = [person1, person2, person3]
 
+
 def get_person_by_card(card_number):
     for person in bank:
         if person['card'] == card_number:
@@ -64,5 +65,5 @@ def start():
     else:
         print('Номер карты или пин код введены не верно!')
 
-start()
 
+start()
