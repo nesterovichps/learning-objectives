@@ -15,6 +15,6 @@
 matrix = [[1, 0, 8],
           [3, 4, 1],
           [0, 4, 2]]
-print(*matrix,sep='\n')
+print(*matrix, sep='\n')
 print()
-print(*[[matrix[i][j] for i in range(0,3)] for j in range(0,3)],sep='\n')
+print(*[[matrix[i][j] for i in range(0, 3)] for j in range(0, 3)], sep='\n')
