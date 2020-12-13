@@ -12,7 +12,7 @@ def check(array, x, y):
         array[x][y] = 1
     else:
         array[x][y] = 9
-        print('YES' ,x,y)
+        print('YES', x, y)
         print(*array, sep='\n')
         exit()
 
@@ -51,12 +51,13 @@ def trajectory(array, y, x):
             i += 1
     else:
         array[x][y] = 9
-        print('YES' ,x,y)
+        print('YES', x, y)
         print(*array, sep='\n')
         exit()
     return array
 
-ferz = (1, 4), (2, 2), (3, 7), (4, 3), (5, 6), (6, 8), (7, 5), (8, 1) # GOOD
+
+ferz = (1, 4), (2, 2), (3, 7), (4, 3), (5, 6), (6, 8), (7, 5), (8, 1)  # GOOD
 # ferz = (1, 4), (2, 2), (3, 7), (4, 3), (5, 6), (6, 8), (7, 5), (8, 1) # GOOD
 # ferz = (1, 5), (2, 2), (3, 4), (4, 7), (5, 3), (6, 8), (7, 6), (8, 1) # GOOD
 # ferz = (1, 3), (2, 5), (3, 2), (4, 8), (5, 6), (6, 4), (7, 7), (8, 1) # GOOD
