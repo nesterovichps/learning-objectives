@@ -1,13 +1,14 @@
 import re
-import requests
 import time
+
+import requests
 
 
 def all_list_page(http_link_universal):
     number_page = 1
     page = True
     while page:  #
-        time.sleep(10)
+        time.sleep(2)
         page = get_page(http_link_universal, number_page)
         number_page += 1
         pars_page(page)
@@ -17,19 +18,20 @@ def get_page(http_link_universal, number_page):
     page = requests.get(http_link_universal.format(number_page))
     if 'По вашему запросу ничего не найдено.' in page.text:
         return False
-    print(http_link_universal.format(number_page))
-    print(number_page)
+    # print(http_link_universal.format(number_page))
+    print('nunber page parsed = ', number_page)
     # print(r.text)
     return page
 
 
 def pars_page(page):
     # print(page.text)
+    if page == False:
+        print('done')
+        exit()
     pattern_mail = '[a-z\.A-Z0-9_\-]+@[a-zA-Z0-9]+\.[a-z]+'
     pattern_phon = '[7-8]{1}9{1}[0-9]{9}'
     save_result(re.findall(pattern_mail, page.text), (re.findall(pattern_phon, page.text)))
-
-    exit()
 
 
 def save_result(email, phon):
