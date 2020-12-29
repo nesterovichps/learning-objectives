@@ -85,8 +85,14 @@ def rm():
         print(' Не удается найти указанный файл')
 
 def cd():
-    pass
-#   cd <full_path or relative_path> - меняет текущую директорию на указанную
+    #   cd <full_path or relative_path> - меняет текущую директорию на указанную
+    if not dir_name:
+        print("Необходимо указать путь")
+        return
+    path_this = os.getcwd()
+    new_directory = dir_name
+    os.chdir(f'{new_directory}')
+    print(os.getcwd())
 def ls():
     #   ls - отображение полного пути текущей директории
     print(os.getcwd())
