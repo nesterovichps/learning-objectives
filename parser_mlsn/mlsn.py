@@ -50,7 +50,8 @@ def save_result(email, phon):
 
 def main():
     save_result('', '')
-    http_link_universal = 'https://omsk.mlsn.ru/pokupka-nedvizhimost/?district=52401372%2C52401376%2C52401380%2C52401382%2Ccenter&objectTypeId=1%2C2%2C3&onlyOwners=1&page={}&priceMax=70000&priceUnitId=2'
+    # http_link_universal = 'https://omsk.mlsn.ru/pokupka-nedvizhimost/?district=52401372%2C52401376%2C52401380%2C52401382%2Ccenter&objectTypeId=1%2C2%2C3&onlyOwners=1&page={}&priceMax=70000&priceUnitId=2'
+    http_link_universal = 'https://omsk.mlsn.ru/pokupka-nedvizhimost/?district=center%2C52401382%2C52401380%2C52401376%2C52401372%2C52401364&isResale=1&objectTypeId=5%2C4%2C3%2C2%2C1&onlyOwners=1&page={}'
     all_list_page(http_link_universal)
 
 
