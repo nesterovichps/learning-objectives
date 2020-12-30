@@ -15,8 +15,8 @@
 # P.S. По возможности, сделайте кросс-платформенную реализацию.
 
 import os
-import sys
 import shutil
+import sys
 
 print('sys.argv = ', sys.argv)
 
@@ -32,6 +32,7 @@ def print_help():
 
 
 def make_dir():
+
     if not dir_name:
         print("Необходимо указать имя директории вторым параметром")
         return
@@ -45,7 +46,9 @@ def make_dir():
 
 def ping():
     print("pong")
-def cp ():
+
+
+def cp():
     # <file_name> - создает копию указанного файла
     if not dir_name:
         print("Необходимо указать имя файла вторым параметром")
@@ -59,6 +62,7 @@ def cp ():
     except FileNotFoundError:
         print('копия не создана {} исходного файла не существует'.format(file_name))
 
+
 def rm():
     #   rm <file_name> - удаляет указанный файл (запросить подтверждение операции)
     if not dir_name:
@@ -66,11 +70,12 @@ def rm():
         return
     path_this = os.getcwd()
     file_name = dir_name
+
     if file_name in os.listdir():
         while True:
             print(f'Вы точно хотите удалить файл {file_name} ? Введите "да" для подтверждения "нет" для отмены')
-            confirm=input()
-            if confirm=="да":
+            confirm = input()
+            if confirm == "да":
 
                 try:
                     os.remove(f'{path_this}/{file_name}')
@@ -78,11 +83,12 @@ def rm():
                     return
                 except FileNotFoundError:
                     print(' Не удается найти указанный файл')
-            elif confirm=="нет":
-                print('Операция отменена, файл не создан')
+            elif confirm == "нет":
+                print('Операция отменена, файл не удален')
                 return
     else:
         print(' Не удается найти указанный файл')
+
 
 def cd():
     #   cd <full_path or relative_path> - меняет текущую директорию на указанную
@@ -93,17 +99,21 @@ def cd():
     new_directory = dir_name
     os.chdir(f'{new_directory}')
     print(os.getcwd())
+
+
 def ls():
     #   ls - отображение полного пути текущей директории
     print(os.getcwd())
+
+
 do = {
     "help": print_help,
     "mkdir": make_dir,
     "ping": ping,
-    "cp":cp,
-    "rm":rm,
-    "cd":cd,
-    "ls":ls
+    "cp": cp,
+    "rm": rm,
+    "cd": cd,
+    "ls": ls
 }
 
 try:
@@ -115,7 +125,6 @@ try:
     key = sys.argv[1]
 except IndexError:
     key = None
-
 
 if key:
     if do.get(key):
