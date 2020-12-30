@@ -31,17 +31,26 @@ def print_help():
     print("ls - отображение полного пути текущей директории")
 
 
-def make_dir():
+def make_dir(*args):
 
-    if not dir_name:
+    if not dir_name and not args:
         print("Необходимо указать имя директории вторым параметром")
         return
-    dir_path = os.path.join(os.getcwd(), dir_name)
+    if args:
+        dir_path = os.path.join(os.getcwd(), args[0])
+    else:
+        dir_path = os.path.join(os.getcwd(), dir_name)
     try:
         os.mkdir(dir_path)
-        print('директория {} создана'.format(dir_name))
+        if args:
+            print('директория {} создана'.format(args[0]))
+        else:
+            print('директория {} создана'.format(dir_name))
     except FileExistsError:
-        print('директория {} уже существует'.format(dir_name))
+        if args:
+            print('директория {} уже существует'.format(args[0]))
+        else:
+            print('директория {} уже существует'.format(dir_name))
 
 
 def ping():
@@ -50,7 +59,7 @@ def ping():
 
 def cp():
     # <file_name> - создает копию указанного файла
-    if not dir_name:
+    if not dir_name :
         print("Необходимо указать имя файла вторым параметром")
         return
     path_this = os.getcwd()
@@ -90,15 +99,19 @@ def rm():
         print(' Не удается найти указанный файл')
 
 
-def cd():
+def cd(*args):
+
     #   cd <full_path or relative_path> - меняет текущую директорию на указанную
-    if not dir_name:
+
+    if not dir_name and not args:
         print("Необходимо указать путь")
         return
-    path_this = os.getcwd()
-    new_directory = dir_name
+    if args:
+        new_directory = args[0]
+    else:
+        new_directory = dir_name
     os.chdir(f'{new_directory}')
-    print(os.getcwd())
+    print(f'Вы перешли {os.getcwd()}')
 
 
 def ls():
