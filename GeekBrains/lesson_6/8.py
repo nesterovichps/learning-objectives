@@ -1,13 +1,6 @@
-# Задача - 1
-# Вам необходимо создать завод по производству мягких игрушек для детей.
-# Вам надо продумать структуру классов,
-# чтобы у вас был класс, который создает игрушки на основании:
-#  Названия, Цвета, Типа (животное, персонаж мультфильма)
-# Опишите процедуры создания игрушки в трех методах:
-# -- Закупка сырья, пошив, окраска
-# Не усложняйте пусть методы просто выводят текст о том, что делают.
-# В итоге ваш класс по производству игрушек должен вернуть объект нового класса Игрушка.
-
+# Задача - 2
+# Доработайте нашу фабрику, создайте по одному классу на каждый тип, теперь надо в классе фабрика
+# исходя из типа игрушки отдавать конкретный объект класса, который наследуется от базового - Игрушка
 class Toy:
     def __init__(self):
         self.type_toy = 'Template'
@@ -17,9 +10,44 @@ class Toy:
         self.sew = False
 
 
+class MarvelToy(Toy):
+    def __init__(self):
+        super().__init__()
+        self.logo = 'Marvel'
+
+
+class DsToy(Toy):
+    def __init__(self):
+        super().__init__()
+        self.logo = 'DS'
+
+
+class Dog(Toy):
+    def __init__(self):
+        super().__init__()
+        self.wool = True
+        self.tail = True
+
+
+class Cat(Toy):
+    def __init__(self):
+        super().__init__()
+        self.wool = True
+        self.tail = True
+
+
 class CreatedToy:
     def __init__(self, name_toy, color_toy, type_toy):
-        self.toy = Toy()
+        if type_toy == 'Marvel toy':
+            self.toy = MarvelToy()
+        elif type_toy == 'DS toy':
+            self.toy = DsToy()
+        elif type_toy == 'cat':
+            self.toy = Cat()
+        elif type_toy == 'dog':
+            self.toy = Dog()
+        else:
+            self.toy = Toy()
         # self._show_status()
         self.pay_materials(name_toy)
         # self._show_status()
@@ -57,7 +85,7 @@ pauk = CreatedToy('Pauk', 'red', 'Marvel toy')
 print(pauk.toy.name_toy, type(pauk.toy))
 betmen = CreatedToy('Betmen', 'black', 'DS toy')
 print(betmen.toy.name_toy, type(betmen.toy))
-halk = CreatedToy('Halk', 'green', 'Marvwl toy')
+halk = CreatedToy('Halk', 'green', 'Marvel toy')
 print(halk.toy.name_toy, type(halk.toy))
 cat = CreatedToy('Bullet', 'grey', 'cat')
 print(cat.toy.name_toy, type(cat.toy))
