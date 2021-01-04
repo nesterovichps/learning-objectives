@@ -59,6 +59,7 @@
 # """
 import random
 import time
+
 import numpy as np
 
 
@@ -101,21 +102,19 @@ class Person:
                 result_line.append('  ')
         return result_line
 
-    def check_card(self, choise_player,cask):
+    def check_card(self, choise_player, cask):
         print(f'{self.name} выбрал {choise_player}')
-        if choise_player =='+':
+        if choise_player == '+':
             for j in range(2, 5):
                 if str(cask) in str(self.card[j]):
-                        return self.update_card(cask)
-            return False,True
+                    return self.update_card(cask)
+            return False, True
         else:
             #     choise_player=='-'
             for j in range(2, 5):
                 if str(cask) in str(self.card[j]):
-                        return False,True
-            return False,False
-
-
+                    return False, True
+            return False, False
 
     def show_card(self):
 
@@ -127,14 +126,15 @@ class Person:
         print(*self.card[5])
         print()
 
-    def update_card(self,cask):
-        for j in range(2,5):
+    def update_card(self, cask):
+        for j in range(2, 5):
             for i in range(9):
-                if self.card[j][i]==cask:
-                    self.card[j][i]='-'
-        if str(self.card[2]).count('-')+str(self.card[3]).count('-')+str(self.card[4]).count('-')==15:
-                    return True,False
-        return False,False
+                if self.card[j][i] == cask:
+                    self.card[j][i] = '-'
+        if str(self.card[2]).count('-') + str(self.card[3]).count('-') + str(self.card[4]).count('-') == 15:
+            return True, False
+        return False, False
+
 
 class Game:
     def __init__(self):
@@ -150,26 +150,26 @@ class Game:
         print('Карточка Компьютера создана')
         self.enemy.show_card()
         time.sleep(0.5)
-        win_player=False
-        win_computer=False
-        faile_player=False
-        faile_computer=False
+        win_player = False
+        win_computer = False
+        faile_player = False
+        faile_computer = False
         while self.list_cask:
-            cask_now=self.get_cask()
-            win_player,faile_player=self.player_move(cask_now)
-            if faile_player ==True:
-                win_computer=True
+            cask_now = self.get_cask()
+            win_player, faile_player = self.player_move(cask_now)
+            if faile_player == True:
+                win_computer = True
             else:
-                win_computer,faile_computer=self.computer_move(cask_now)
-            if faile_computer==True:
-                win_player=True
+                win_computer, faile_computer = self.computer_move(cask_now)
+            if faile_computer == True:
+                win_player = True
             self.player.show_card()
             self.enemy.show_card()
             if win_player or win_computer:
                 break
         print('==================')
         print('    Итог игры')
-        self.check_win(win_player,win_computer)
+        self.check_win(win_player, win_computer)
         print('==================')
         print()
         self.player.show_card()
@@ -177,32 +177,32 @@ class Game:
 
     def get_cask(self):
 
-        cask=random.choice(self.list_cask)
+        cask = random.choice(self.list_cask)
         self.list_cask.remove(cask)
         print(f'Выпало число {cask} в мешке осталось {len(self.list_cask)} боченков')
         return cask
 
-
-    def player_move(self,cask):
-        choise_player=input('Введите "+" если число есть на карточке, "-" если нет: ')
-        while choise_player!='+' and choise_player!='-':
+    def player_move(self, cask):
+        choise_player = input('Введите "+" если число есть на карточке, "-" если нет: ')
+        while choise_player != '+' and choise_player != '-':
             print('Вы ввели неверное значение')
-            choise_player=input('Введите "+" если число есть на карточке, "-" если нет: ')
+            choise_player = input('Введите "+" если число есть на карточке, "-" если нет: ')
         # ---AUTO GAME---
         # choise_player = '-'
         # for j in range(2, 5):
         #     if str(cask) in str(self.player.card[j]):
         #             choise_player = '+'
 
-        return (self.player.check_card(choise_player,cask))
+        return (self.player.check_card(choise_player, cask))
 
-    def computer_move(self,cask):
-        choise_player='-'
+    def computer_move(self, cask):
+        choise_player = '-'
         for j in range(2, 5):
             if str(cask) in str(self.enemy.card[j]):
                 choise_player = '+'
-        return (self.enemy.check_card(choise_player,cask))
-    def check_win(self,win_player,win_computer):
+        return (self.enemy.check_card(choise_player, cask))
+
+    def check_win(self, win_player, win_computer):
         if win_player and win_computer:
             print('Боевая ничья')
         elif win_player:
@@ -211,5 +211,6 @@ class Game:
             print('Выиграл Компьютер')
         else:
             print('ERROR WIN ')
+
 
 game = Game()
