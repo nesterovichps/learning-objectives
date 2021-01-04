@@ -64,9 +64,9 @@ import numpy as np
 
 class Person:
     def __init__(self, name, list_cask):
-        self.all_column = [list_cask[0:10], list_cask[10:20], list_cask[20:30],
-                           list_cask[30:40], list_cask[40:50], list_cask[50:60],
-                           list_cask[60:70], list_cask[70:80], list_cask[80:90]]
+        self.all_column = [list_cask[0:9], list_cask[9:19], list_cask[19:29],
+                           list_cask[29:39], list_cask[39:49], list_cask[49:59],
+                           list_cask[59:69], list_cask[69:79], list_cask[79:90]]
         self.name = name
         self.created_card()
 
